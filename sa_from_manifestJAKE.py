@@ -297,7 +297,9 @@ def parser():
 	verbose = args.verbose
 	cwe = args.cwe
 	fv = args.fv
-
+	
+	print("PATH: " + str(input_path) + " TOOL: " + str(tool) + " VERBOSE: " + str(verbose))
+	
 	if not os.path.isfile(input_path):
 	    print('The manifest specified does not exist!')
 	    sys.exit()
