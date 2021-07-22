@@ -36,7 +36,7 @@ import argparse
 import pickle
 import matplotlib.pyplot as plt
 import pandas as pd
-from Manifest import Manifest
+from Manifest import ManifestJAKE
 from config import read_cpp_conf, read_flw_conf
 from run_log import process_testcase
 from sa_utils import formt, calc_metrics, make_result_dir
