@@ -67,12 +67,20 @@ def main():
 					# Update list with absolute file paths
 					if '    <file' in test_lines[idx]:
 						parts = test_lines[idx].split('\"')
+						
+						#JAKE ADDED LINE
+						print("testlines " + test_lines)
+						print("parts" + parts)
+						
 						simple_cwe_parts = parts[1].split('_')
 						simple_cwe = simple_cwe_parts[0]
 
 						dir_to_search = manifest_path.split('manifest.xml')
 						specific_dir = glob.glob(dir_to_search[0] + 'testcases/' + simple_cwe + '*')
-
+						
+						#JAKE LINES FOR READABILITY
+						print("specifc_dir " + specific_dir)
+						
 						# Special condition for CWE36 and CWE78 because of a conflict with other dirs that start with same prefix
 						dir_index = 0
 						if 'CWE36' == simple_cwe:
@@ -83,7 +91,7 @@ def main():
 							for dir_idx in range(len(specific_dir)):
 								if "CWE78_" in specific_dir[dir_idx]:
 									dir_index = dir_idx
-
+									
 						abs_test_file = glob.glob(specific_dir[dir_index] + '/**/' + parts[1], recursive = True)
 
 						dont_count = False
