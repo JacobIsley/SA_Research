@@ -69,8 +69,8 @@ def main():
 						parts = test_lines[idx].split('\"')
 						
 						#JAKE ADDED LINE
-						print("testlines " + test_lines)
-						print("parts" + parts)
+						print("testlines " + str(test_lines))
+						print("parts" + str(parts))
 						
 						simple_cwe_parts = parts[1].split('_')
 						simple_cwe = simple_cwe_parts[0]
@@ -79,7 +79,7 @@ def main():
 						specific_dir = glob.glob(dir_to_search[0] + 'testcases/' + simple_cwe + '*')
 						
 						#JAKE LINES FOR READABILITY
-						print("specifc_dir " + specific_dir)
+						print("specifc_dir " + str(specific_dir))
 						
 						# Special condition for CWE36 and CWE78 because of a conflict with other dirs that start with same prefix
 						dir_index = 0
