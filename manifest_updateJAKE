@@ -63,9 +63,12 @@ def main():
 						test_lines.append(line_tuple[1])
 
 				need_info = True
+				#print test lines for readability, need to delete later bc of overflow
+				print(str(test_lines))
 				for idx in range(len(test_lines)):
 					# Update list with absolute file paths
-					if '    <file' in test_lines[idx]:
+					#Edited if statement in order to make sure analysis only if java in test_line
+					if '    <file' in test_lines[idx] and '.java' in test_lines[idx]:
 						parts = test_lines[idx].split('\"')
 						
 						#JAKE ADDED LINE
@@ -74,11 +77,13 @@ def main():
 						
 						simple_cwe_parts = parts[1].split('_')
 						simple_cwe = simple_cwe_parts[0]
-
+						
+						#edited to add src/testcases since Java is laid out differently
 						dir_to_search = manifest_path.split('manifest.xml')
-						specific_dir = glob.glob(dir_to_search[0] + 'testcases/' + simple_cwe + '*')
+						specific_dir = glob.glob(dir_to_search[0] + 'src/testcases/' + simple_cwe + '*')
 						
 						#JAKE LINES FOR READABILITY
+						print("dir_to_search " + str(dir_to_search))
 						print("specifc_dir " + str(specific_dir))
 						
 						# Special condition for CWE36 and CWE78 because of a conflict with other dirs that start with same prefix
